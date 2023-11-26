@@ -9,7 +9,7 @@ import getpass
 
 
 QDRANT_URL="https://89493295-3556-440d-b575-4a17c278da8b.us-east4-0.gcp.cloud.qdrant.io"
-QDRANT_API_KEY ="GyxfvL8cdu1ljvDVKfi5NVPvu7PhFt1U_tuvpqrtUHsiOzIJZ8sQFA"
+QDRANT_API_KEY =""
 client = qdrant_client.QdrantClient(QDRANT_URL, QDRANT_API_KEY)
 collection_name = "products"
 
@@ -24,7 +24,7 @@ client.create_collection(
 """
 
 ## 768 for instructor-xl, 1536 as we will be using openAI embeddings 
-os.environ["OPENAI_API_KEY"] =  getpass.getpass("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")
+os.environ["OPENAI_API_KEY"] =  getpass.getpass("")
 embeddings = OpenAIEmbeddings()
 
 
