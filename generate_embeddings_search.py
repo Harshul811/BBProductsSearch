@@ -37,11 +37,12 @@ vector_store = Qdrant(
 
 # Extract product names and descriptions as lists
 products_df = pd.read_csv('bigBasketProducts.csv')
-product_names = products_df['product'].tolist()
-product_descriptions = products_df['description'].tolist()
 
-texts = [] # arrays of text to add to vector store
-vector_store.add_texts(product_names[:50])
+rows_as_text = []
+for index, row in products_df.iterrows():
+    row_text = ', '.join(f'{column} {value}' for column, value in row.items() if column != "index")
+    rows_as_text.append(row_text)
+vector_store.add_texts(rows_as_text[:50])  #update to all rows with larger tps limits 
 
 
 qa= RetrievalQA.from_chain_type(
